@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { UserService, User } from './user.service';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -8,25 +11,21 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  profileForm: FormGroup;
+  user: User;
+
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService) { }
 
   ngOnInit(): void {
+    this.profileForm = this.formBuilder.group({
+      firstName : ['', Validators.required],
+      lastName: ['', Validators.required]
+    });
   }
 
-  profileForm = new FormGroup({
-    firstname : new FormControl('', [
-      Validators.required,
-      Validators.minLength(4),
-    ]),
-    lastname : new FormControl('', [
-      Validators.required,
-      Validators.minLength(4),
-    ])
-  });
-
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.profileForm.value);
+      this.userService.addUser(this.profileForm.value);
   }
 
 }
