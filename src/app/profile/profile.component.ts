@@ -25,7 +25,12 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-      this.userService.addUser(this.profileForm.value);
+    console.log('Form Subbmitted');
+    this.userService.addUser(this.profileForm.value);
+  }
+
+  onReset() {
+    this.profileForm.reset();
   }
 
 }

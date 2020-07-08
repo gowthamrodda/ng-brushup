@@ -7,3 +7,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+mat-toolbar[color="indigo"] {
+  top: 0;
+  position: fixed;
+  height: var(--default-height);
+}
