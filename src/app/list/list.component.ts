@@ -7,20 +7,18 @@ import * as data from 'src/assets/data.json';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-
   userList = [];
   displayedColumns: string[] = ['FirstName', 'LastName'];
   dataSource = new BehaviorSubject<User[]>([...(data as any).default]);
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.user.subscribe((usr) => {
-     this.userList.push(usr);
+      this.userList.push(usr);
       this.dataSource.next([...this.userList]);
     });
   }
-
 }

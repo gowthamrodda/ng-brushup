@@ -1,7 +1,7 @@
 <form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Add Name to List</mat-card-title>
+      <mat-card-title [appHighlight]="color">Add Name to List</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field class="example-full-width">
@@ -14,10 +14,20 @@
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" [disabled]="!profileForm.valid" type="submit">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!profileForm.valid"
+        type="submit"
+      >
         ADD
       </button>
-      <button mat-raised-button color="primary" (click)="reset()" type="reset">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onReset()"
+        type="reset"
+      >
         RESET
       </button>
     </mat-card-actions>

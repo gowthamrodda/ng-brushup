@@ -9,12 +9,14 @@ import { ListComponent } from './list/list.component';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    ProfileComponent
+    ProfileComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
